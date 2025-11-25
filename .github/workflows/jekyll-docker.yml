@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "fr">
+    <head>
+        <meta charset=""utf-8/>
+        <title> TITRE </title>
+    </head>
+    <body>
+        <font color="red" face="verdana" size="500"> mon texte </font>
+    </body>
+        <center>
+        <h1> conception de sites web <br> sans CSS</h1>
+        </center>
+       <p align="center">MON PARAGRAPHE AVC TEXTE. 
+        <p align="left"><br> ici suite</P>
+        <h2> sous titre</h2>
+        <P>autre paragraphe</P>
+        <i> Italique avec em ou avec le i</i>
+        <br>
+        <b>gras</b> ou <b>gras autrement</b> 
+        <br>
+        <mark>Surligné</mark>
+        
+<li></li>
+<li>Mélange salade de fruits</li>
+<li>Fraise</li>
+<li>Bananne</li>
+
+<li>kiwi:</li>
+
+</ol>
+        <p align="right">Copiright</p>
+    </body>
+</html>
