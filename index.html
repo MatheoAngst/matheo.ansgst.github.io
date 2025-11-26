@@ -17,7 +17,7 @@
       --text-main: #1a1a1a;
       --text-secondary: #4a4a4a;
       --nav-bg: rgba(255, 255, 255, 0.95);
-      --mobile-menu-bg: #ffffff; /* Fond du menu mobile */
+      --mobile-menu-bg: #ffffff;
       
       --card-bg: rgba(255, 255, 255, 0.7);
       --card-border: rgba(0, 0, 0, 0.04);
@@ -51,9 +51,10 @@
     body { box-sizing: border-box; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
+    /* SCROLL FLUIDE */
     html {
         scroll-behavior: smooth;
-        scroll-padding-top: 100px;
+        scroll-padding-top: 100px; /* Marge pour le menu fixe */
         height: 100%;
     }
     
@@ -111,18 +112,18 @@
       letter-spacing: 5px;
       color: var(--text-main);
       text-transform: uppercase;
-      z-index: 1001; /* Toujours au-dessus */
+      z-index: 1001;
     }
 
-    /* --- MENU BURGER (3 TRAITS) --- */
+    /* --- MENU BURGER --- */
     .hamburger {
-        display: none; /* Caché sur PC */
+        display: none;
         cursor: pointer;
         background: none;
         border: none;
         flex-direction: column;
         gap: 6px;
-        z-index: 1002; /* Au-dessus du menu */
+        z-index: 1002;
         padding: 10px;
     }
 
@@ -134,18 +135,10 @@
         transition: all 0.3s ease;
     }
 
-    /* Animation Burger en Croix (X) */
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-    }
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-    /* Menu Standard (Desktop) */
     .nav-menu {
       display: flex;
       gap: 35px;
@@ -318,6 +311,16 @@
       color: var(--text-secondary);
     }
 
+    /* --- CONTACT GRID --- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      align-items: stretch;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
     /* --- MANIFESTO --- */
     .manifesto-section {
       text-align: center;
@@ -431,35 +434,6 @@
     }
     .selection-item:hover { transform: scale(1.03); }
 
-    /* --- PARTNERS --- */
-    .partners-section {
-      padding: 80px 0 120px;
-      background: var(--nav-bg); 
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 50px;
-      max-width: 1000px;
-      margin: 60px auto 0;
-      align-items: center;
-    }
-
-    .partner-logo {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 300;
-      letter-spacing: 3px;
-      color: var(--text-secondary);
-      padding: 30px 20px;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-    .partner-logo:hover { opacity: 1; }
-
     /* --- CTA BOTTOM --- */
     .cta-section {
       text-align: center;
@@ -513,53 +487,31 @@
       margin-bottom: 10px;
     }
 
-    /* --- RESPONSIVE (MODIFIÉ POUR MENU BURGER) --- */
+    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
-      .nav-container {
-        padding: 15px 24px;
-        /* On garde la ligne horizontale (Logo - Burger) */
-        flex-direction: row; 
-      }
+      .nav-container { padding: 15px 24px; flex-direction: row; }
+      
+      .hamburger { display: flex; }
 
-      /* Affiche le burger */
-      .hamburger {
-        display: flex;
-      }
-
-      /* Le menu devient un panneau mobile caché */
       .nav-menu {
         position: fixed;
-        top: 0;
-        right: -100%; /* Caché à droite */
-        width: 100%;
-        height: 100vh;
+        top: 0; right: -100%; width: 100%; height: 100vh;
         background: var(--mobile-menu-bg);
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: column; justify-content: center;
         transition: right 0.4s ease;
-        z-index: 1000; /* Sous le logo et burger */
-        padding: 60px;
+        z-index: 1000; padding: 60px;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
       }
+      .nav-menu.active { right: 0; }
+      .nav-menu li { margin: 15px 0; }
+      .nav-menu a { font-size: 20px; }
 
-      /* Quand le menu est actif */
-      .nav-menu.active {
-        right: 0; /* Il glisse à l'écran */
-      }
-
-      .nav-menu li {
-        margin: 15px 0;
-      }
-
-      .nav-menu a {
-        font-size: 20px; /* Plus gros sur mobile */
-      }
-
-      /* Reste du responsive */
       .hero-banner { height: 500px; margin-top: 80px; }
       .hero-title { font-size: 36px; }
       .main-content { padding: 0 24px; }
-      .services-grid, .why-grid, .selection-grid { grid-template-columns: 1fr; }
+      
+      /* Tout en 1 colonne sur mobile */
+      .services-grid, .why-grid, .selection-grid, .contact-grid { grid-template-columns: 1fr; }
     }
 </style>
 
@@ -577,16 +529,14 @@
     <div class="nav-logo" id="navLogo">MATHEO ANGST</div>
     
     <button class="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </button>
 
     <ul class="nav-menu">
         <li><a href="#Expérience" id="navAccueil" onclick="closeMenu()">Expérience</a></li>
         <li><a href="#pourquoi-moi" id="navServices" onclick="closeMenu()">Mon Profil</a></li>
         <li><a href="#selections" id="navSelections" onclick="closeMenu()">Sélections</a></li>
-        <li><a href="#formulaire" id="navFormulaire" onclick="closeMenu()">Contact</a></li>
+        <li><a href="#contact-info" id="navFormulaire" onclick="closeMenu()">Contact</a></li>
         <li><button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">🌗</button></li>
         <li>
             <button class="nav-cta" onclick="window.open('mon_cv.pdf', '_blank')" id="navCta">
@@ -696,16 +646,20 @@
     </section>
 </main>
 
-<section class="partners-section">
+<section class="services-section" id="contact-info">
     <div class="main-content">
-        <h2 class="section-title reveal-on-scroll">Collaborations</h2>
-        <div class="partners-grid reveal-on-scroll">
-            <div class="partner-logo">GALERIE A</div>
-            <div class="partner-logo">STUDIO B</div>
-            <div class="partner-logo">ESPACE C</div>
-            <div class="partner-logo">ATELIER D</div>
-            <div class="partner-logo">MAISON E</div>
-            <div class="partner-logo">PROJET F</div>
+        <h2 class="section-title reveal-on-scroll">Contact</h2>
+        <div class="contact-grid">
+            <div class="service-card reveal-on-scroll">
+                <h3 class="service-title">Téléphone</h3>
+                <p class="service-description">
+                    06 00 00 00 00 </p>
+            </div>
+            <div class="service-card reveal-on-scroll" style="transition-delay: 0.2s;">
+                <h3 class="service-title">Email</h3>
+                <p class="service-description">
+                    matheo.angst@exemple.com </p>
+            </div>
         </div>
     </div>
 </section>
@@ -728,17 +682,14 @@
 </script>
 
 <script>
-    // Sélection des éléments
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
-    // Fonction pour ouvrir/fermer
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
 
-    // Fonction pour fermer quand on clique sur un lien
     function closeMenu() {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
@@ -768,7 +719,7 @@
 </script>
 
 <script>
-    /* Configuration Element SDK (Minimale pour éviter les erreurs) */
+    /* Configuration Element SDK */
     const defaultConfig = {};
     async function onConfigChange(config) {}
     function mapToCapabilities(config) {}
