@@ -353,25 +353,16 @@
       padding: 40px 30px;
       border-radius: 12px;
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      border: 1px solid transparent;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
     .why-item:hover {
-      background: #000000;
-      border-color: #000000;
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      border-color: var(--text-secondary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-
-    .why-item:hover .why-title { color: #ffffff; }
-    .why-item:hover .why-description { color: rgba(255, 255, 255, 0.8); }
-
-    body.dark-mode .why-item:hover {
-      background: #ffffff;
-      border-color: #ffffff;
-    }
-    body.dark-mode .why-item:hover .why-title { color: #000000; }
-    body.dark-mode .why-item:hover .why-description { color: rgba(0, 0, 0, 0.8); }
     
     .why-title {
       font-size: 24px;
@@ -407,26 +398,6 @@
       line-height: 1.8;
       color: var(--text-secondary);
     }
-
-    .projets-section { padding: 80px 0 120px; }
-    .projets-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .projets-item {
-      aspect-ratio: 3/4;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.4s ease;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-    }
-    .projets-item:hover { transform: scale(1.03); }
 
     .cta-section {
       text-align: center;
@@ -501,7 +472,7 @@
       .hero-title { font-size: 36px; }
       .main-content { padding: 0 24px; }
       
-      .services-grid, .why-grid, .projets-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
     }
 </style>
 
@@ -526,7 +497,6 @@
         <li><a href="#contact-info" id="navFormulaire" onclick="closeMenu()">Contact</a></li>
         <li><a href="#pourquoi-moi" id="navServices" onclick="closeMenu()">Mon Profil</a></li>
         <li><a href="#Expérience" id="navAccueil" onclick="closeMenu()">Expérience</a></li>
-        <li><a href="#projets" id="navProjets" onclick="closeMenu()">Projets informatiques</a></li>
         <li><button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">🌗</button></li>
         <li>
             <button class="nav-cta" onclick="window.open('mon_cv.pdf', '_blank')" id="navCta">
@@ -585,9 +555,8 @@
             <div class="service-card reveal-on-scroll" style="transition-delay: 0.2s;">
                 <h3 class="service-title">Sur Ordinateur</h3>
                 <p class="service-description">
-                    Aisance sur Windows ainsi que sur les machines virtuelles. <br><br>Dactylographie de précision<br><br>
-                    Maîtrise avancée du Pack Office (Word, Excel, PowerPoint) pour la gestion documentaire et administrative.<br><br> 
-                    Navigation web sécurisée et gestion de fichiers organisée.<br><br>
+                    Aisance sur Windows ainsi que sur les machines virtuelles. <br><br>Dactylographie experte<br><br>
+                    Maîtrise avancée du Pack Office <br> (Word, Excel, PowerPoint) <br> pour la gestion documentaire et administrative.<br><br>
                     Maîtrise des langages et logiciels :<br>HTML & CSS<br>SketchUp Make<br>FL Studio<br>
                 </p>
             </div>
@@ -619,16 +588,6 @@
                 <h3 class="service-title">Mes diplômes</h3>
                 <p class="service-description" id="serviceAffaires">Bac Pro AGOrA :<br>Assistance à la gestion des organisations et de leurs activités<br><br>Brevet des Collèges<br> avec Mention Assez Bien<br><br>Certification PIX niveau Terminale (Informatique)</p>
             </div>
-        </div>
-    </section>
-
-    <section class="projets-section" id="projets">
-        <h2 class="section-title reveal-on-scroll">Mes Projets informatiques</h2>
-        <div class="projets-grid">
-            <div class="projets-item reveal-on-scroll"></div>
-            <div class="projets-item reveal-on-scroll" style="transition-delay: 0.2s;"></div>
-            <div class="projets-item reveal-on-scroll" style="transition-delay: 0.4s;"></div>
-            <div class="projets-item reveal-on-scroll" style="transition-delay: 0.6s;"></div>
         </div>
     </section>
 
